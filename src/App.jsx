@@ -14,11 +14,11 @@ function App() {
   function toggleTimer() {
     if (shouldMetronomeStart) {
       timer.start();
-      shouldMetronomeStart = !shouldMetronomeStart;
     } else  {
       timer.stop();
-      shouldMetronomeStart = !shouldMetronomeStart;
     }
+
+    shouldMetronomeStart = !shouldMetronomeStart;
   }
 
   return (
