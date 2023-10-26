@@ -7,7 +7,7 @@ import Timer from './Timer';
 import './app.css';
 
 function App() {
-  const [bpm, setBpm] = useState(40);
+  const [bpm, setBpm] = useState(60);
   const timer = new Timer(bpm);
   let shouldMetronomeStart = true;
 
@@ -26,9 +26,9 @@ function App() {
       <h1>{ bpm } bpm</h1>
 
       <div className="bpm-setters-container">
-        <RemoveIcon onClick={ () => setBpm(prev =>  prev <= 40 ? 40 : (prev - 1)) } />
+        <RemoveIcon onClick={ () => setBpm(prev =>  prev <= 60 ? 60 : (prev - 1)) } />
 
-        <Slider min={ 40 } max={ 400 } value={ bpm } sx={{ width: '70%', margin: '0 20px 0 20px' }} onChange={ e => { setBpm(e.target.value); } } />
+        <Slider min={ 60 } max={ 400 } value={ bpm } sx={{ width: '70%', margin: '0 20px 0 20px' }} onChange={ e => { setBpm(e.target.value); } } />
 
         <AddIcon onClick={ () => setBpm(prev =>  prev >= 400 ? 400 : (prev + 1))} />
       </div>
