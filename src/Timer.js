@@ -6,13 +6,30 @@ export default class Timer {
   oneMinute = 60000;
   constructor(bpm) {
     this.bpm = bpm;
+    this.timeOut = this.oneMinute / this.bpm;
+    this.interval;
+  }
+
+  click() {
+    metronomeClick.play();
+
+    this.drift = new Date().getTime() - this.expected;
+
+    this.expected += this.timeOut;
+
+    this.interval = setTimeout(() => {  this.click(); }, this.timeOut - this.drift);
+
   }
 
   start() {
-    this.interval = setInterval(() => { metronomeClick.play(); }, this.oneMinute / this.bpm);
+    metronomeClick.play();
+
+    this.expected = new Date().getTime(); + this.timeOut;
+
+    this.interval = setTimeout(() => {  this.click(); }, this.timeOut);
   }
 
   stop() {
-    clearInterval(this.interval);
+    clearTimeout(this.interval);
   }
 }
