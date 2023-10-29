@@ -2,24 +2,23 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import { Slider } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Timer from './Timer';
 import './app.css';
 
 function App() {
   const [bpm, setBpm] = useState(60);
   const timer = new Timer(bpm);
-  let shouldMetronomeStart = true;
+  const [shouldMetronomeStart, setShouldMetronomeStart] =  useState(false);
 
-  function toggleTimer() {
+  useEffect(() => {
     if (shouldMetronomeStart) {
       timer.start();
-    } else  {
+    }
+    else {
       timer.stop();
     }
-
-    shouldMetronomeStart = !shouldMetronomeStart;
-  }
+  }, [shouldMetronomeStart]);
 
   return (
     <div className='main-wrapper'>
@@ -33,7 +32,7 @@ function App() {
         <AddIcon onClick={ () => setBpm(prev =>  prev >= 400 ? 400 : (prev + 1))} />
       </div>
 
-      <PlayCircleFilledIcon onClick={ () => { toggleTimer(); } } />
+      <PlayCircleFilledIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
 
     </div>
   );
