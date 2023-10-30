@@ -8,7 +8,7 @@ import './app.css';
 
 function App() {
   const [bpm, setBpm] = useState(60);
-  const timer = new Timer(bpm);
+  const [timer] = useState(new Timer(bpm));
   const [shouldMetronomeStart, setShouldMetronomeStart] =  useState(false);
 
   useEffect(() => {
