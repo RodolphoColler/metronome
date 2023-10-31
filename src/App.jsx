@@ -12,13 +12,18 @@ function App() {
   const [shouldMetronomeStart, setShouldMetronomeStart] =  useState(false);
 
   useEffect(() => {
-    if (shouldMetronomeStart) {
-      timer.start();
-    }
-    else {
-      timer.stop();
-    }
+    if (shouldMetronomeStart) return timer.start();
+
+    timer.stop();
   }, [shouldMetronomeStart]);
+
+  useEffect(() => {
+    timer.stop();
+
+    timer.bpm = bpm;
+
+    if (shouldMetronomeStart) timer.start();
+    }, [bpm]);
 
   return (
     <div className='main-wrapper'>
