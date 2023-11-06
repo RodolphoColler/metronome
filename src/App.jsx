@@ -7,8 +7,16 @@ import { useEffect, useState } from 'react';
 import Timer from './Timer';
 import './app.css';
 
+function initialBpm() {
+  const bpm = Number(localStorage.getItem('bpm'));  // eslint-disable-line
+
+  if (!bpm) return 60;
+
+  return bpm;
+}
+
 function App() {
-  const [bpm, setBpm] = useState(60);
+  const [bpm, setBpm] = useState(initialBpm);
   useHotkeys('ArrowRight, Add', () => setBpm(prev => prev + 1));
   useHotkeys('ArrowLeft, Subtract', () => setBpm(prev => prev - 1));
   useHotkeys(' ', () => setShouldMetronomeStart(prev => !prev));
@@ -26,14 +34,16 @@ function App() {
 
     timer.bpm = bpm;
 
+    localStorage.setItem('bpm', bpm);  // eslint-disable-line
+
     if (shouldMetronomeStart) timer.start();
     }, [bpm]);
 
   return (
     <div className='main-wrapper'>
       <div>
-        <h1 className='bpm'>{ bpm }</h1>
         <p>BPM</p>
+        <h1 className='bpm'>{ bpm }</h1>
       </div>
 
 
