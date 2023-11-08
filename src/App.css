@@ -13,3 +13,20 @@
   align-items: center;
   width: 100%;
 }
+
+.bpm-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bpm-container > h1 {
+  font-size: 10rem;
+  font-weight: 800;
+}
+
+p {
+  font-size: 2rem;
+  font-weight: 200;
+}

@@ -41,11 +41,10 @@ function App() {
 
   return (
     <div className='main-wrapper'>
-      <div>
+      <div className='bpm-container'>
         <p>BPM</p>
-        <h1 className='bpm'>{ bpm }</h1>
+        <h1>{ bpm }</h1>
       </div>
-
 
       <div className="bpm-setters-container">
         <RemoveIcon onClick={ () => setBpm(prev =>  prev <= 60 ? 60 : (prev - 1)) } />
@@ -55,7 +54,7 @@ function App() {
         <AddIcon onClick={ () => setBpm(prev =>  prev >= 400 ? 400 : (prev + 1))} />
       </div>
 
-      <PlayCircleFilledIcon  onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
+      <PlayCircleFilledIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
 
     </div>
   );
