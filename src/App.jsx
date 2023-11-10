@@ -3,22 +3,15 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { Slider } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Timer from './Timer';
 import './app.css';
-
-function initialBpm() {
-  const bpm = Number(localStorage.getItem('bpm'));  // eslint-disable-line
-
-  if (!bpm) return 60;
-
-  return bpm;
-}
+import MetronomeContext from './context/MetronomeContext';
 
 function App() {
-  const [bpm, setBpm] = useState(initialBpm);
-  useHotkeys('ArrowRight, Add', () => setBpm(prev => prev + 1));
-  useHotkeys('ArrowLeft, Subtract', () => setBpm(prev => prev - 1));
+  const { bpm, increaseBpm, decreaseBpm, setBpm } = useContext(MetronomeContext);
+  useHotkeys('ArrowRight, Add', () => increaseBpm());
+  useHotkeys('ArrowLeft, Subtract', () => decreaseBpm());
   useHotkeys(' ', () => setShouldMetronomeStart(prev => !prev));
   const [timer] = useState(new Timer(bpm));
   const [shouldMetronomeStart, setShouldMetronomeStart] =  useState(false);
@@ -47,11 +40,11 @@ function App() {
       </div>
 
       <div className="bpm-setters-container">
-        <RemoveIcon onClick={ () => setBpm(prev =>  prev <= 60 ? 60 : (prev - 1)) } />
+        <RemoveIcon sx={{ fontSize: '5rem' }} onClick={ () => decreaseBpm() } />
 
         <Slider min={ 60 } max={ 400 } value={ bpm } sx={{ width: '70%', margin: '0 20px 0 20px' }} onChange={ e => { setBpm(e.target.value); } } />
 
-        <AddIcon onClick={ () => setBpm(prev =>  prev >= 400 ? 400 : (prev + 1))} />
+        <AddIcon onClick={ () => increaseBpm() } />
       </div>
 
       <PlayCircleFilledIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
