@@ -4,9 +4,11 @@ const metronomeClick = new Audio(audio); // eslint-disable-line
 
 export default class Timer {
   oneMinute = 60000;
-  constructor(bpm) {
+  constructor(bpm, setBeatCounting, beats) {
     this.bpm = bpm;
+    this.beats = beats;
     this.interval;
+    this.setBeatCounting = setBeatCounting;
   }
 
   click() {
@@ -17,6 +19,8 @@ export default class Timer {
     this.expected += this.timeOut;
 
     this.interval = setTimeout(() => {  this.click(); }, this.timeOut - this.drift);
+
+    this.setBeatCounting(prev => prev + 1 === this.beats ? 0 : prev+= 1);
   }
 
   start() {
