@@ -5,7 +5,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import { Slider } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import Timer from './Timer';
-import './app.css';
+import './App.css';
 import MetronomeContext from './context/MetronomeContext';
 
 function App() {
