@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from 'react';
 import Timer from './Timer';
 import './App.css';
 import MetronomeContext from './context/MetronomeContext';
+import Beats from './components/beats';
 
 function App() {
   const { bpm, increaseBpm, decreaseBpm, setBpm } = useContext(MetronomeContext);
@@ -49,15 +50,7 @@ function App() {
         <AddIcon sx={{ fontSize: '5rem' }} onClick={ () => increaseBpm() } />
       </div>
 
-      <div className='beats-container'>
-
-        {
-          Array.from({length: beats}, (_, i) => i + 1).map((e, index) => (
-            <div key={e} className={`metronome-beats${index === beatCounting ? "-selected" : '' }`}></div>
-          ))
-        }
-
-      </div>
+      <Beats beats={ beats } beatCounting={ beatCounting } />
 
       <PlayCircleFilledIcon className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
     </div>
