@@ -36,17 +36,15 @@ p {
 }
 
 .metronome-beats {
-  height: 25px;
-  width: 25px;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
   background-color: #bbbbbb;
   border-radius: 50%;
 }
 
-.metronome-beats-selected {
-  height: 25px;
-  width: 25px;
+.metronome-beats.selected {
   background-color: rgb(46, 124, 213);
-  border-radius: 50%;
 }
 
 .metronome-toggler.MuiSvgIcon-fontSizeMedium {

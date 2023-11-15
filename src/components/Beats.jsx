@@ -6,7 +6,7 @@ function Beats({beats, beatCounting}) {
 
       {
         Array.from({length: beats}, (_, i) => i + 1).map((e, index) => (
-          <div key={e} className={`metronome-beats${index === beatCounting ? "-selected" : '' }`}></div>
+          <div key={e} className={`metronome-beats${index === beatCounting ? " selected" : '' }`}></div>
         ))
       }
 
