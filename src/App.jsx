@@ -15,7 +15,7 @@ function App() {
   useHotkeys('ArrowLeft, Subtract', () => decreaseBpm());
   useHotkeys(' ', () => setShouldMetronomeStart(prev => !prev));
   const [shouldMetronomeStart, setShouldMetronomeStart] =  useState(false);
-  const [beats] = useState(4);
+  const [beats, setBeats] = useState(4);
   const [beatCounting, setBeatCounting] = useState(0);
   const [timer] = useState(new Timer(bpm, setBeatCounting, beats));
 
@@ -51,6 +51,12 @@ function App() {
       </div>
 
       <Beats beats={ beats } beatCounting={ beatCounting } />
+
+      <div className="beats-setters-container">
+        <RemoveIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev <= 1 ? 1 : (prev - 1)) } />
+        <p>Beats: { beats }</p>
+        <AddIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)) } />
+      </div>
 
       <PlayCircleFilledIcon className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
     </div>
