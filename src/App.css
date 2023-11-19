@@ -35,6 +35,12 @@ p {
   display: flex;
 }
 
+.beats-setters-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .metronome-beats {
   height: 40px;
   width: 40px;
