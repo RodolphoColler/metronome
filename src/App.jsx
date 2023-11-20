@@ -29,11 +29,12 @@ function App() {
     timer.stop();
 
     timer.bpm = bpm;
+    timer.beats = beats;
 
     localStorage.setItem('bpm', bpm);  // eslint-disable-line
 
     if (shouldMetronomeStart) timer.start();
-    }, [bpm]);
+    }, [bpm, beats]);
 
   return (
     <div className='main-wrapper'>
