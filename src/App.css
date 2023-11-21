@@ -24,6 +24,7 @@
 .bpm-container > h1 {
   font-size: 10rem;
   font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 p {
@@ -55,5 +56,9 @@ p {
 
 .metronome-toggler.MuiSvgIcon-fontSizeMedium {
   font-size: 6rem;
+  cursor: pointer;
+}
+
+.MuiSvgIcon-root {
   cursor: pointer;
 }
