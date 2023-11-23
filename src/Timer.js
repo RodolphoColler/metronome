@@ -18,9 +18,9 @@ export default class Timer {
 
     this.expected += this.timeOut;
 
-    this.interval = setTimeout(() => {  this.click(); }, this.timeOut - this.drift);
+    this.setBeatCounting(prev => prev + 1 >= this.beats ? 0 : prev+= 1);
 
-    this.setBeatCounting(prev => prev + 1 === this.beats ? 0 : prev+= 1);
+    this.interval = setTimeout(() => {  this.click(); }, this.timeOut - this.drift);
   }
 
   start() {
