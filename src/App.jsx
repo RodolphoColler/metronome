@@ -39,14 +39,17 @@ function App() {
   return (
     <div className='main-wrapper'>
       <div className='bpm-container'>
-        <p>BPM</p>
         <h1>{ bpm }</h1>
+        <div>
+          <p>BPM</p>
+
+        </div>
       </div>
 
       <div className="bpm-setters-container">
         <RemoveIcon sx={{ fontSize: '5rem' }} onClick={ () => decreaseBpm() } />
 
-        <Slider min={ 60 } max={ 400 } value={ bpm } sx={{ width: '70%', margin: '0 20px 0 20px' }} onChange={ e => { setBpm(e.target.value); } } />
+        <Slider className="slider" min={ 60 } max={ 400 } value={ bpm } sx={{ width: '70%', margin: '0 20px 0 20px' }} onChange={ e => { setBpm(e.target.value); } } />
 
         <AddIcon sx={{ fontSize: '5rem' }} onClick={ () => increaseBpm() } />
       </div>

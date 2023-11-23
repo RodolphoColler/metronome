@@ -16,15 +16,17 @@
 
 .bpm-container {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
   justify-content: center;
-  align-items: center;
+  width: 100%;
 }
 
 .bpm-container > h1 {
   font-size: 10rem;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
+  width: 400px;
+  text-align: center;
 }
 
 p {
