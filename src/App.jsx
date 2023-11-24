@@ -11,13 +11,15 @@ import Beats from './components/beats';
 
 function App() {
   const { bpm, increaseBpm, decreaseBpm, setBpm } = useContext(MetronomeContext);
-  useHotkeys('ArrowRight, Add', () => increaseBpm());
-  useHotkeys('ArrowLeft, Subtract', () => decreaseBpm());
-  useHotkeys(' ', () => setShouldMetronomeStart(prev => !prev));
   const [shouldMetronomeStart, setShouldMetronomeStart] =  useState(false);
   const [beats, setBeats] = useState(4);
   const [beatCounting, setBeatCounting] = useState(0);
   const [timer] = useState(new Timer(bpm, setBeatCounting, beats));
+  useHotkeys('ArrowRight, Add', () => increaseBpm());
+  useHotkeys('ArrowLeft, Subtract', () => decreaseBpm());
+  useHotkeys(' ', () => setShouldMetronomeStart(prev => !prev));
+  useHotkeys('ArrowUp', () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)));
+  useHotkeys('ArrowDown', () => setBeats(prev =>  prev <= 1 ? 1 : (prev - 1)));
 
   useEffect(() => {
     if (shouldMetronomeStart) return timer.start();
@@ -40,10 +42,7 @@ function App() {
     <div className='main-wrapper'>
       <div className='bpm-container'>
         <h1>{ bpm }</h1>
-        <div>
-          <p>BPM</p>
-
-        </div>
+        <p>BPM</p>
       </div>
 
       <div className="bpm-setters-container">
