@@ -42,7 +42,9 @@ function App() {
     <div className='main-wrapper'>
       <div className='bpm-container'>
         <h1>{ bpm }</h1>
-        <p>BPM</p>
+        <div>
+          <p>BPM</p>
+        </div>
       </div>
 
       <div className="bpm-setters-container">

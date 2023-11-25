@@ -29,9 +29,12 @@
   text-align: center;
 }
 
-p {
+
+.bpm-container p {
   font-size: 2rem;
   font-weight: 200;
+  top: 260px;
+  position: absolute;
 }
 
 .beats-container {
@@ -44,6 +47,10 @@ p {
   align-items: center;
 }
 
+.beats-setters-container > p {
+  font-size: 2rem;
+  font-weight: 200;
+}
 .metronome-beats {
   height: 35px;
   width: 35px;
