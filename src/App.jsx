@@ -48,7 +48,25 @@ function App() {
       <div className="bpm-setters-container">
         <RemoveIcon sx={{ fontSize: '5rem' }} onClick={ () => decreaseBpm() } />
 
-        <Slider className="slider" min={ 60 } max={ 400 } value={ bpm } sx={{ width: '70%', margin: '0 20px 0 20px' }} onChange={ e => { setBpm(e.target.value); } } />
+        <Slider
+          className="slider"
+          min={ 60 }
+          max={ 400 }
+          value={ bpm }
+          sx={{
+            width: '70%',
+            margin: '0 20px 0 20px',
+            height: '8px',
+            '& .MuiSlider-thumb': {
+              height: 35,
+              width: 35,
+              '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+                boxShadow: 'none',
+              },
+            },
+          }}
+          onChange={ e => { setBpm(e.target.value); } }
+        />
 
         <AddIcon sx={{ fontSize: '5rem' }} onClick={ () => increaseBpm() } />
       </div>
