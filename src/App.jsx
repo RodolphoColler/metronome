@@ -3,6 +3,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { Slider } from '@mui/material';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import Modal from '@mui/material/Modal';
 import { useContext, useEffect, useState } from 'react';
 import Timer from './Timer';
 import './App.css';
@@ -15,6 +17,9 @@ function App() {
   const [beats, setBeats] = useState(4);
   const [beatCounting, setBeatCounting] = useState(0);
   const [timer] = useState(new Timer(bpm, setBeatCounting, beats));
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   useHotkeys('ArrowRight, Add', () => increaseBpm());
   useHotkeys('ArrowLeft, Subtract', () => decreaseBpm());
   useHotkeys(' ', () => setShouldMetronomeStart(prev => !prev));
@@ -39,18 +44,28 @@ function App() {
     }, [bpm, beats]);
 
   return (
-    <div className='main-wrapper'>
-      <div className='bpm-container'>
-        <h1>{ bpm }</h1>
-        <div>
-          <p>BPM</p>
-        </div>
+    <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        absolute={true}
+      >
+        <p style={{ position: 'absolute', fontSize: '50px' }}>nothing at all</p>
+      </Modal>
+      <div className='modal'>
+        <QuestionMarkIcon onClick={handleOpen}/>
       </div>
+      <div className='main-wrapper'>
+        <div className='bpm-container'>
+          <h1>{ bpm }</h1>
+          <div>
+            <p>BPM</p>
+          </div>
+        </div>
+        <div className="bpm-setters-container">
+          <RemoveIcon sx={{ fontSize: '5rem' }} onClick={ () => decreaseBpm() } />
 
-      <div className="bpm-setters-container">
-        <RemoveIcon sx={{ fontSize: '5rem' }} onClick={ () => decreaseBpm() } />
-
-        <Slider
+          <Slider
           className="slider"
           min={ 60 }
           max={ 400 }
@@ -70,19 +85,20 @@ function App() {
           onChange={ e => { setBpm(e.target.value); } }
         />
 
-        <AddIcon sx={{ fontSize: '5rem' }} onClick={ () => increaseBpm() } />
+          <AddIcon sx={{ fontSize: '5rem' }} onClick={ () => increaseBpm() } />
+        </div>
+
+        <Beats beats={ beats } beatCounting={ beatCounting } />
+
+        <div className="beats-setters-container">
+          <RemoveIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev <= 1 ? 1 : (prev - 1)) } />
+          <p>Beats: { beats }</p>
+          <AddIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)) } />
+        </div>
+
+        <PlayCircleFilledIcon className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
       </div>
-
-      <Beats beats={ beats } beatCounting={ beatCounting } />
-
-      <div className="beats-setters-container">
-        <RemoveIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev <= 1 ? 1 : (prev - 1)) } />
-        <p>Beats: { beats }</p>
-        <AddIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)) } />
-      </div>
-
-      <PlayCircleFilledIcon className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
-    </div>
+    </>
   );
 }
 
