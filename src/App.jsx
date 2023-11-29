@@ -1,15 +1,17 @@
+import Slider from '@mui/material/Slider';
+import Modal from '@mui/material/Modal';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { Slider } from '@mui/material';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-import Modal from '@mui/material/Modal';
 import { useContext, useEffect, useState } from 'react';
 import Timer from './Timer';
-import './App.css';
 import MetronomeContext from './context/MetronomeContext';
 import Beats from './components/beats';
+import './App.css';
 
 function App() {
   const { bpm, increaseBpm, decreaseBpm, setBpm } = useContext(MetronomeContext);
@@ -48,9 +50,15 @@ function App() {
       <Modal
         open={open}
         onClose={handleClose}
-        absolute={true}
       >
-        <p style={{ position: 'absolute', fontSize: '50px' }}>nothing at all</p>
+        <div className='modal-wrapper'>
+          <h2>Hotkeys</h2>
+          <div className='instruction-wrapper'>
+            <ArrowBackIcon className='key-wrapper' />
+            <ArrowForwardIcon className='key-wrapper' />
+            <p>Left and Right key are used to decrease and increase bpm respectively.</p>
+          </div>
+        </div>
       </Modal>
       <div className='modal'>
         <QuestionMarkIcon onClick={handleOpen}/>
