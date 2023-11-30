@@ -89,3 +89,33 @@
   width: 35px;
   height: 35px;
 }
+
+.modal-wrapper {
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: rgb(20, 51, 70);
+  outline: none;
+}
+
+.key-wrapper {
+  text-align: center;
+  border: 3px solid rgb(227, 223, 223);
+  border-radius: 4px;
+  border-bottom: 4px solid;
+  width: 40px;
+  height: 37px;
+}
+
+.instruction-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
+.instruction-wrapper > p {
+  font-weight: 800;
+  font-size: 25px;
+}
