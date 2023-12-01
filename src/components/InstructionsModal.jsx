@@ -32,7 +32,7 @@ function InstructionsModal() {
           </div>
           <div className='instruction-wrapper'>
             <SpaceBarIcon className='key-wrapper' />
-            <p>Space Key is used to start and stop metronome.</p>
+            <p>Space key is used to start and stop metronome.</p>
           </div>
         </div>
       </Modal>
