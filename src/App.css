@@ -72,7 +72,7 @@
   cursor: pointer;
 }
 
-.modal {
+.modal-button {
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -84,7 +84,7 @@
   height: 37px;
 }
 
-.modal svg {
+.modal-button svg {
   border-radius: 30px;
   width: 35px;
   height: 35px;
