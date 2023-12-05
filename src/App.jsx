@@ -2,6 +2,7 @@ import Slider from '@mui/material/Slider';
 import Modal from '@mui/material/Modal';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import SpaceBarIcon from '@mui/icons-material/SpaceBar';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -64,6 +65,10 @@ function App() {
             <ArrowDownwardIcon className='key-wrapper' />
             <ArrowUpwardIcon className='key-wrapper' />
             <p>Downward and Upward key are used to decrease and increase beats respectively.</p>
+          </div>
+          <div className='instruction-wrapper'>
+            <SpaceBarIcon className='key-wrapper' />
+            <p>Space Key is used to start and stop metronome.</p>
           </div>
         </div>
       </Modal>
