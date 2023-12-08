@@ -1,13 +1,7 @@
 import Slider from '@mui/material/Slider';
-import Modal from '@mui/material/Modal';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import SpaceBarIcon from '@mui/icons-material/SpaceBar';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useContext, useEffect, useState } from 'react';
@@ -15,6 +9,7 @@ import Timer from './Timer';
 import MetronomeContext from './context/MetronomeContext';
 import Beats from './components/beats';
 import './App.css';
+import InstructionsModal from './components/InstructionsModal';
 
 function App() {
   const { bpm, increaseBpm, decreaseBpm, setBpm } = useContext(MetronomeContext);
@@ -22,9 +17,6 @@ function App() {
   const [beats, setBeats] = useState(4);
   const [beatCounting, setBeatCounting] = useState(0);
   const [timer] = useState(new Timer(bpm, setBeatCounting, beats));
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   useHotkeys('ArrowRight, Add', () => increaseBpm());
   useHotkeys('ArrowLeft, Subtract', () => decreaseBpm());
   useHotkeys(' ', () => setShouldMetronomeStart(prev => !prev));
@@ -50,31 +42,7 @@ function App() {
 
   return (
     <>
-      <Modal
-        open={open}
-        onClose={handleClose}
-      >
-        <div className='modal-wrapper'>
-          <h2>Hotkeys</h2>
-          <div className='instruction-wrapper'>
-            <ArrowBackIcon className='key-wrapper' />
-            <ArrowForwardIcon className='key-wrapper' />
-            <p>Left and Right key are used to decrease and increase bpm respectively.</p>
-          </div>
-          <div className='instruction-wrapper'>
-            <ArrowDownwardIcon className='key-wrapper' />
-            <ArrowUpwardIcon className='key-wrapper' />
-            <p>Downward and Upward key are used to decrease and increase beats respectively.</p>
-          </div>
-          <div className='instruction-wrapper'>
-            <SpaceBarIcon className='key-wrapper' />
-            <p>Space Key is used to start and stop metronome.</p>
-          </div>
-        </div>
-      </Modal>
-      <div className='modal-button'>
-        <QuestionMarkIcon onClick={handleOpen}/>
-      </div>
+      <InstructionsModal />
       <div className='main-wrapper'>
         <div className='bpm-container'>
           <h1>{ bpm }</h1>
