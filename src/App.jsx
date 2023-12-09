@@ -1,13 +1,12 @@
 import Slider from '@mui/material/Slider';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useContext, useEffect, useState } from 'react';
 import Timer from './Timer';
 import MetronomeContext from './context/MetronomeContext';
-import Beats from './components/beats';
+import Beats from './components/Beats';
 import './App.css';
 import InstructionsModal from './components/InstructionsModal';
 
