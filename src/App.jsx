@@ -29,18 +29,7 @@ function App() {
             min={ 60 }
             max={ 400 }
             value={ bpm }
-            sx={{
-              width: '70%',
-              margin: '0 20px 0 20px',
-              height: '8px',
-              '& .MuiSlider-thumb': {
-                height: 35,
-                width: 35,
-                '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-                  boxShadow: 'none',
-                },
-              },
-            }}
+            injectFirst
             onChange={ e => { setBpm(e.target.value); } }
           />
 
