@@ -21,6 +21,25 @@
   width: 100%;
 }
 
+.slider.MuiSlider-root {
+  width: 70%;
+  margin: 0px 20px 0px 20px;
+  height: 9px;
+}
+
+.slider .MuiSlider-thumb {
+  height: 35px;
+  width: 35px;
+}
+
+.slider .MuiSlider-thumb:is(:hover, :focus) {
+  box-shadow: none;
+}
+
+.slider .MuiSlider-thumb.Mui-focusVisible {
+  box-shadow: none;
+}
+
 .bpm-container > h1 {
   font-size: 10rem;
   font-weight: 800;
