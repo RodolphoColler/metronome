@@ -24,7 +24,6 @@ function MetronomeProvider({children}) {
   useHotkeys('ArrowUp', () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)));
   useHotkeys('ArrowDown', () => setBeats(prev =>  prev <= 1 ? 1 : (prev - 1)));
 
-
   function increaseBpm() {
     setBpm(prev =>  prev >= 400 ? 400 : (prev + 1));
   }
@@ -32,6 +31,12 @@ function MetronomeProvider({children}) {
   function decreaseBpm() {
     setBpm(prev =>  prev <= 60 ? 60 : (prev - 1));
   }
+
+  useEffect(() => {
+    if (shouldMetronomeStart) return timer.start();
+
+    timer.stop();
+  }, [shouldMetronomeStart]);
 
   useEffect(() => {
     timer.stop();
