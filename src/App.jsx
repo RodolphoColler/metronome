@@ -1,7 +1,7 @@
 import Slider from '@mui/material/Slider';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useContext } from 'react';
 import MetronomeContext from './context/MetronomeContext';
 import Beats from './components/Beats';
@@ -47,7 +47,7 @@ function App() {
           </div>
         </div>
 
-        <PlayCircleFilledIcon className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
+        <PlayArrowIcon className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
       </div>
     </>
   );
