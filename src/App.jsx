@@ -46,8 +46,11 @@ function App() {
             <AddIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)) } />
           </div>
         </div>
+         
+        <button className="metronome-toggler">
+          <PlayArrowIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
+        </button>
 
-        <PlayArrowIcon className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
       </div>
     </>
   );
