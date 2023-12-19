@@ -2,6 +2,7 @@ import Slider from '@mui/material/Slider';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 import { useContext } from 'react';
 import MetronomeContext from './context/MetronomeContext';
 import Beats from './components/Beats';
@@ -9,7 +10,7 @@ import './App.css';
 import InstructionsModal from './components/InstructionsModal';
 
 function App() {
-  const { bpm, setBpm,increaseBpm, decreaseBpm, beats, setBeats, beatCounting, setShouldMetronomeStart } = useContext(MetronomeContext);
+  const { bpm, setBpm,increaseBpm, decreaseBpm, beats, setBeats, beatCounting, setShouldMetronomeStart, shouldMetronomeStart } = useContext(MetronomeContext);
 
   return (
     <>
@@ -48,7 +49,12 @@ function App() {
         </div>
          
         <button className="metronome-toggler">
-          <PlayArrowIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
+          {
+            shouldMetronomeStart == true ? 
+              <PauseIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
+            :
+              <PlayArrowIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
+          }
         </button>
 
       </div>
