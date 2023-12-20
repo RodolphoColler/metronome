@@ -1,16 +1,15 @@
+import { useContext } from 'react';
+import Beats from './components/Beats';
 import Slider from '@mui/material/Slider';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PauseIcon from '@mui/icons-material/Pause';
-import { useContext } from 'react';
 import MetronomeContext from './context/MetronomeContext';
-import Beats from './components/Beats';
-import './App.css';
 import InstructionsModal from './components/InstructionsModal';
+import MetronomeToggler from './components/metronomeToggler/MetronomeToggler';
+import './App.css';
 
 function App() {
-  const { bpm, setBpm,increaseBpm, decreaseBpm, beats, setBeats, beatCounting, setShouldMetronomeStart, shouldMetronomeStart } = useContext(MetronomeContext);
+  const { bpm, setBpm,increaseBpm, decreaseBpm, beats, setBeats, beatCounting } = useContext(MetronomeContext);
 
   return (
     <>
@@ -47,16 +46,8 @@ function App() {
             <AddIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)) } />
           </div>
         </div>
-         
-        <button className="metronome-toggler">
-          {
-            shouldMetronomeStart == true ? 
-              <PauseIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
-            :
-              <PlayArrowIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
-          }
-        </button>
-
+  
+       <MetronomeToggler/>
       </div>
     </>
   );
