@@ -9,13 +9,8 @@ function MetronomeToggler() {
 
   return (
 		<>
-			<button className="metronome-toggler">
-			{
-					shouldMetronomeStart == true ? 
-					<PauseIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
-					:
-					<PlayArrowIcon onClick={ () => { setShouldMetronomeStart(prev => !prev); } } />
-			}
+			<button className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } }>
+				{ shouldMetronomeStart == true ? <PauseIcon /> : <PlayArrowIcon /> }
 			</button>
 		</>
 	)
