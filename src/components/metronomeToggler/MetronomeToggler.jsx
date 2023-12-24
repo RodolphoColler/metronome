@@ -8,12 +8,12 @@ function MetronomeToggler() {
   const { setShouldMetronomeStart, shouldMetronomeStart } = useContext(MetronomeContext);
 
   return (
-		<>
-			<button className="metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } }>
-				{ shouldMetronomeStart == true ? <PauseIcon /> : <PlayArrowIcon /> }
-			</button>
-		</>
-	)
+    <>
+      <button className="	metronome-toggler" onClick={ () => { setShouldMetronomeStart(prev => !prev); } }>
+        { shouldMetronomeStart == true ? <PauseIcon /> : <PlayArrowIcon /> }
+      </button>
+    </>
+  );
 }
 
 export default MetronomeToggler;
