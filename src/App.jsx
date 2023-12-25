@@ -46,8 +46,8 @@ function App() {
             <AddIcon sx={{ fontSize: '3rem' }} onClick={ () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)) } />
           </div>
         </div>
-  
-       <MetronomeToggler/>
+
+        <MetronomeToggler/>
       </div>
     </>
   );
