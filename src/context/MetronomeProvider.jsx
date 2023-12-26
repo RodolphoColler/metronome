@@ -24,8 +24,8 @@ function MetronomeProvider({children}) {
   useHotkeys('ArrowUp', () => setBeats(prev =>  prev >= 10 ? 10 : (prev + 1)));
   useHotkeys('ArrowDown', () => setBeats(prev =>  prev <= 1 ? 1 : (prev - 1)));
 
-  function increaseBpm() {
-    setBpm(prev =>  prev >= 400 ? 400 : (prev + 1));
+  function increaseBpm(addNumber = 1) {
+    setBpm(prev =>  prev >= 400 ? 400 : (prev + addNumber));
   }
 
   function decreaseBpm() {
