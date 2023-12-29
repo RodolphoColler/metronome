@@ -16,25 +16,24 @@ function CountDown() {
   useEffect(() => {
     if(isCountDownStarted) {
       setIntervalCountdown(setInterval(() => {
-        count-=1;
         if (count === 0) {
           increaseBpm(complementBpm);
           count = initialCount;
         }
+        count-=1;
         setCountDown(`${String(Math.floor(count / 60)).padStart(2, '0')}:${String(count % 60).padStart(2, '0')}`);
       }, 1000));
     }
     else {
       clearTimeout(intervalCountDown);
-      setCountDown(`${String(Math.floor(initialCount / 60)).padStart(2, '0')}:${String(initialCount % 60).padStart(2, '0')}`);
     }
-  }, [isCountDownStarted, ]);
+  }, [isCountDownStarted]);
 
   return (
     <>
-      <RemoveIcon sx={{ fontSize: '5rem' }} onClick={ () => setComplementBpm(prev =>  prev <= 60 ? (prev - 1) : 60)} />
+      <RemoveIcon sx={{ fontSize: '5rem' }} onClick={ () => setComplementBpm(prev =>  prev <= 1 ? 1 : (prev - 1))} />
       <p>{ complementBpm }</p>
-      <AddIcon sx={{ fontSize: '5rem' }} onClick={ () => setComplementBpm(prev =>  prev >= 400 ? 400 : (prev + 1)) } />
+      <AddIcon sx={{ fontSize: '5rem' }} onClick={ () => setComplementBpm(prev =>  prev >= 20 ? 20 : (prev + 1)) } />
       <h2>{ countDown }</h2>
       <button onClick={ () => { setIsCountDownStarted(prev => !prev); }}>start count down</button>
     </>
