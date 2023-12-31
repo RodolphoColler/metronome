@@ -2,6 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import MetronomeContext from '../../context/MetronomeContext';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import PauseIcon from '@mui/icons-material/Pause';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import './CountDown.css';
 
 const initialCount = 10;
 
@@ -31,11 +34,16 @@ function CountDown() {
 
   return (
     <>
-      <RemoveIcon sx={{ fontSize: '5rem' }} onClick={ () => setComplementBpm(prev =>  prev <= 1 ? 1 : (prev - 1))} />
-      <p>{ complementBpm }</p>
-      <AddIcon sx={{ fontSize: '5rem' }} onClick={ () => setComplementBpm(prev =>  prev >= 20 ? 20 : (prev + 1)) } />
-      <h2>{ countDown }</h2>
-      <button onClick={ () => { setIsCountDownStarted(prev => !prev); }}>start count down</button>
+      <div className="countdown-wrapper">
+        <p>Increase BPM per second</p>
+        <RemoveIcon sx={{ fontSize: '1rem' }} className="complement-bpm left" onClick={ () => setComplementBpm(prev =>  prev <= 1 ? 1 : (prev - 1))} />
+        <p>{ complementBpm }</p>
+        <AddIcon sx={{ fontSize: '1rem' }} className="complement-bpm right" onClick={ () => setComplementBpm(prev =>  prev >= 20 ? 20 : (prev + 1)) } />
+        <h2>{ countDown }</h2>
+        <button className="countdown-toggler" onClick={ () => { setIsCountDownStarted(prev => !prev); } }>
+          { isCountDownStarted == true ? <PauseIcon /> : <PlayArrowIcon /> }
+        </button>
+      </div>
     </>
   );
 }
